@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ashik Rahman | Excelist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#0b1120;
+    color:white;
+    overflow-x:hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --primary:#2563eb;
+    --secondary:#06b6d4;
+    --success:#10b981;
+    --card:#111827;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+section{
+    padding:90px 0;
+}
+
+h1,h2,h3{
+    margin-bottom:15px;
+}
+
+p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary{
+    background:var(--primary);
+    color:white;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.outline{
+    background:transparent;
+    border:1px solid var(--primary);
+    color:white;
+}
+
+.outline:hover{
+    background:var(--primary);
+}
+
+nav{
+    position:fixed;
+    width:100%;
+    background:rgba(11,17,32,.95);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+    color:var(--secondary);
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:64px;
+    line-height:1.1;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#2563eb,#06b6d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.05);
+    padding:25px;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.metric{
+    font-size:38px;
+    font-weight:800;
+    color:var(--secondary);
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:42px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.service-card{
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:var(--card);
+    padding:20px;
+    border-radius:15px;
+}
+
+.progress{
+    background:#1e293b;
+    height:10px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.bar{
+    height:10px;
+    border-radius:10px;
+    background:linear-gradient(90deg,#2563eb,#06b6d4);
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.project{
+    background:var(--card);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.project-image{
+    height:200px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.project-content{
+    padding:25px;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    background:var(--card);
+    padding:40px;
+    border-radius:20px;
+}
+
+input,textarea{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#1e293b;
+    color:white;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(255,255,255,.05);
+    color:var(--muted);
+}
+
+@media(max-width:900px){
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:44px;
+}
+
+nav ul{
+display:none;
+}
+
+.dashboard{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container nav-content">
+<div class="logo">Excelist</div>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container hero-grid">
+
+<div>
+<h1>
+Transform Manual Work Into
+<span class="gradient">Automated Business Systems</span>
+</h1>
+
+<p style="margin-top:20px;">
+Hi, I'm Ashik. I help businesses automate workflows,
+build reporting systems, create dashboards,
+and develop custom software solutions.
+</p>
+
+<div class="hero-buttons">
+<button class="btn primary">View Portfolio</button>
+<button class="btn outline">Book Consultation</button>
+</div>
+</div>
+
+<div class="dashboard">
+
+<div class="card">
+<p>Automation Projects</p>
+<div class="metric">20+</div>
+</div>
+
+<div class="card">
+<p>Reports Generated</p>
+<div class="metric">50K+</div>
+</div>
+
+<div class="card">
+<p>Hours Saved</p>
+<div class="metric">1250+</div>
+</div>
+
+<div class="card">
+<p>Business Solutions</p>
+<div class="metric">15+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+
+<div class="section-title">
+<h2>About Me</h2>
+</div>
+
+<div class="card">
+<p>
+I specialize in Business Automation, Reporting Systems,
+Dashboard Development, Data Analytics, Google Apps Script,
+Java Spring Boot, React Applications, and Process Automation.
+
+My mission is to help businesses eliminate repetitive work
+and gain valuable insights from their data.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+
+<div class="section-title">
+<h2>Services</h2>
+</div>
+
+<div class="grid-3">
+
+<div class="service-card">
+<div class="icon">⚡</div>
+<h3>Business Automation</h3>
+<p>Automate workflows, emails, approvals and repetitive business processes.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">📊</div>
+<h3>Reporting Systems</h3>
+<p>Daily, weekly and monthly automated reporting solutions.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">📈</div>
+<h3>Dashboard Development</h3>
+<p>Power BI, Excel and Google Sheets dashboards.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">💻</div>
+<h3>Custom Software</h3>
+<p>React and Spring Boot applications tailored to your needs.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">🧹</div>
+<h3>Data Cleansing</h3>
+<p>Transform messy business data into usable information.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">🤖</div>
+<h3>API Integrations</h3>
+<p>Connect systems and automate data exchange.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Skills Dashboard</h2>
+</div>
+
+<div class="skills">
+
+<div class="skill">
+<h3>Google Apps Script</h3>
+<div class="progress"><div class="bar" style="width:95%"></div></div>
+</div>
+
+<div class="skill">
+<h3>Excel / VBA</h3>
+<div class="progress"><div class="bar" style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+<h3>Java Spring Boot</h3>
+<div class="progress"><div class="bar" style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+<h3>React.js</h3>
+<div class="progress"><div class="bar" style="width:75%"></div></div>
+</div>
+
+<div class="skill">
+<h3>Power BI</h3>
+<div class="progress"><div class="bar" style="width:80%"></div></div>
+</div>
+
+<div class="skill">
+<h3>MySQL</h3>
+<div class="progress"><div class="bar" style="width:85%"></div></div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="products">
+<div class="container">
+
+<div class="section-title">
+<h2>Products</h2>
+</div>
+
+<div class="projects">
+
+<div class="project">
+<div class="project-image"></div>
+<div class="project-content">
+<h3>Expense Tracker</h3>
+<p>Automatically track expenses from Gmail and generate reports.</p>
+</div>
+</div>
+
+<div class="project">
+<div class="project-image"></div>
+<div class="project-content">
+<h3>Stock Analytics Platform</h3>
+<p>FII tracking, market analytics and automated reporting.</p>
+</div>
+</div>
+
+<div class="project">
+<div class="project-image"></div>
+<div class="project-content">
+<h3>Report Delivery Platform</h3>
+<p>Subscription-based report generation and delivery system.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+
+<div class="section-title">
+<h2>Featured Projects</h2>
+</div>
+
+<div class="projects">
+
+<div class="project">
+<div class="project-image"></div>
+<div class="project-content">
+<h3>Instagram Automation</h3>
+<p>Comment monitoring and automated responses using Google Apps Script.</p>
+</div>
+</div>
+
+<div class="project">
+<div class="project-image"></div>
+<div class="project-content">
+<h3>Business Reporting System</h3>
+<p>Automated report generation with licensing and subscriptions.</p>
+</div>
+</div>
+
+<div class="project">
+<div class="project-image"></div>
+<div class="project-content">
+<h3>Stock Market Dashboard</h3>
+<p>Interactive analytics and insights for investors.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<div class="section-title">
+<h2>Let's Work Together</h2>
+</div>
+
+<div class="contact-box">
+
+<input placeholder="Your Name">
+<input placeholder="Email">
+<textarea rows="5" placeholder="Tell me about your project"></textarea>
+
+<br><br>
+
+<button class="btn primary">
+Send Message
+</button>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Excelist | Business Automation & Reporting Solutions
+</footer>
+
+</body>
+</html>
