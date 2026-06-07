@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ashik Rahman | Excelist</title>
+<title>Excelist | Data Analytics & Business Intelligence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -17,23 +17,24 @@
     font-family:'Inter',sans-serif;
 }
 
-body{
-    background:#0b1120;
-    color:white;
-    overflow-x:hidden;
-}
-
 html{
     scroll-behavior:smooth;
 }
 
+body{
+    background:#050816;
+    color:#fff;
+    overflow-x:hidden;
+}
+
 :root{
-    --primary:#2563eb;
-    --secondary:#06b6d4;
-    --success:#10b981;
-    --card:#111827;
-    --text:#f8fafc;
-    --muted:#94a3b8;
+    --blue:#003B73;
+    --blue-dark:#001E3C;
+    --green:#22C55E;
+    --green-dark:#16A34A;
+    --card:#0F172A;
+    --text:#E2E8F0;
+    --muted:#94A3B8;
 }
 
 .container{
@@ -43,107 +44,116 @@ html{
 }
 
 section{
-    padding:90px 0;
-}
-
-h1,h2,h3{
-    margin-bottom:15px;
-}
-
-p{
-    color:var(--muted);
-    line-height:1.7;
-}
-
-.btn{
-    padding:14px 28px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.primary{
-    background:var(--primary);
-    color:white;
-}
-
-.primary:hover{
-    transform:translateY(-3px);
-}
-
-.outline{
-    background:transparent;
-    border:1px solid var(--primary);
-    color:white;
-}
-
-.outline:hover{
-    background:var(--primary);
+    padding:100px 0;
 }
 
 nav{
     position:fixed;
+    top:0;
     width:100%;
-    background:rgba(11,17,32,.95);
-    backdrop-filter:blur(10px);
     z-index:1000;
+    background:rgba(5,8,22,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-.nav-content{
+.nav-wrapper{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 0;
+    padding:18px 0;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:800;
-    color:var(--secondary);
+.logo-nav{
+    height:45px;
 }
 
-nav ul{
+.nav-links{
     display:flex;
-    gap:25px;
-    list-style:none;
+    gap:30px;
 }
 
-nav a{
+.nav-links a{
     text-decoration:none;
-    color:white;
+    color:#fff;
+    font-weight:500;
 }
 
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,var(--green),transparent 70%);
+    opacity:.08;
+    top:-150px;
+    right:-150px;
 }
 
 .hero-grid{
     display:grid;
     grid-template-columns:1.2fr 1fr;
-    gap:50px;
+    gap:60px;
     align-items:center;
+}
+
+.hero-logo{
+    width:420px;
+    max-width:100%;
+    margin-bottom:30px;
 }
 
 .hero h1{
     font-size:64px;
     line-height:1.1;
+    margin-bottom:20px;
 }
 
-.gradient{
-    background:linear-gradient(90deg,#2563eb,#06b6d4);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.highlight{
+    color:var(--green);
 }
 
-.hero-buttons{
+.hero p{
+    font-size:20px;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.btn-group{
+    margin-top:35px;
     display:flex;
     gap:15px;
-    margin-top:30px;
+}
+
+.btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--green);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:1px solid var(--green);
+    color:#fff;
 }
 
 .dashboard{
@@ -154,20 +164,16 @@ nav a{
 
 .card{
     background:var(--card);
-    border:1px solid rgba(255,255,255,.05);
     padding:25px;
     border-radius:20px;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
+    border:1px solid rgba(255,255,255,.05);
 }
 
 .metric{
     font-size:38px;
     font-weight:800;
-    color:var(--secondary);
+    color:var(--green);
+    margin-top:10px;
 }
 
 .section-title{
@@ -179,7 +185,12 @@ nav a{
     font-size:42px;
 }
 
-.grid-3{
+.section-title p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:25px;
@@ -196,59 +207,86 @@ nav a{
     transform:translateY(-8px);
 }
 
-.icon{
-    font-size:40px;
+.service-icon{
+    font-size:42px;
     margin-bottom:15px;
 }
 
-.skills{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.service-card h3{
+    margin-bottom:10px;
 }
 
-.skill{
+.service-card p{
+    color:var(--muted);
+}
+
+.dashboard-preview{
     background:var(--card);
-    padding:20px;
+    border-radius:25px;
+    padding:30px;
+}
+
+.chart-placeholder{
+    height:250px;
     border-radius:15px;
-}
-
-.progress{
-    background:#1e293b;
-    height:10px;
-    border-radius:10px;
-    margin-top:10px;
-}
-
-.bar{
-    height:10px;
-    border-radius:10px;
-    background:linear-gradient(90deg,#2563eb,#06b6d4);
-}
-
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-    gap:25px;
-}
-
-.project{
-    background:var(--card);
-    border-radius:20px;
+    margin-top:20px;
+    background:
+    linear-gradient(
+    180deg,
+    rgba(34,197,94,.15),
+    rgba(34,197,94,.02));
+    position:relative;
     overflow:hidden;
 }
 
-.project-image{
-    height:200px;
-    background:linear-gradient(135deg,#2563eb,#06b6d4);
+.chart-placeholder::after{
+    content:'';
+    position:absolute;
+    width:120%;
+    height:3px;
+    background:var(--green);
+    top:55%;
+    left:-10%;
+    transform:rotate(-12deg);
 }
 
-.project-content{
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:var(--card);
+    border-radius:20px;
     padding:25px;
 }
 
-.contact{
-    text-align:center;
+.product h3{
+    margin-bottom:10px;
+}
+
+.tag{
+    display:inline-block;
+    background:rgba(34,197,94,.15);
+    color:var(--green);
+    padding:5px 10px;
+    border-radius:20px;
+    margin-top:10px;
+    font-size:13px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+}
+
+.skill{
+    padding:12px 18px;
+    border-radius:50px;
+    background:var(--card);
 }
 
 .contact-box{
@@ -256,22 +294,26 @@ nav a{
     margin:auto;
     background:var(--card);
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
 }
 
 input,textarea{
     width:100%;
     padding:15px;
-    margin-top:15px;
     border:none;
     border-radius:10px;
-    background:#1e293b;
+    margin-top:15px;
+    background:#1E293B;
     color:white;
 }
 
+textarea{
+    min-height:150px;
+}
+
 footer{
-    text-align:center;
     padding:30px;
+    text-align:center;
     border-top:1px solid rgba(255,255,255,.05);
     color:var(--muted);
 }
@@ -279,305 +321,283 @@ footer{
 @media(max-width:900px){
 
 .hero-grid{
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 }
 
 .hero h1{
-font-size:44px;
-}
-
-nav ul{
-display:none;
+    font-size:42px;
 }
 
 .dashboard{
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    display:none;
 }
 
 }
 
 </style>
 </head>
+
 <body>
 
 <nav>
-<div class="container nav-content">
-<div class="logo">Excelist</div>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#products">Products</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<div class="container nav-wrapper">
+
+<img src="assets/logo/excelist-logo.png"
+     alt="Excelist"
+     class="logo-nav">
+
+<div class="nav-links">
+<a href="#services">Services</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#products">Products</a>
+<a href="#skills">Expertise</a>
+<a href="#contact">Contact</a>
+</div>
+
 </div>
 </nav>
 
 <section class="hero">
+
 <div class="container hero-grid">
 
 <div>
+
+<img src="assets/logo/excelist-logo.png"
+     alt="Excelist"
+     class="hero-logo">
+
 <h1>
-Transform Manual Work Into
-<span class="gradient">Automated Business Systems</span>
+Transform Business Data Into
+<span class="highlight">Actionable Insights</span>
 </h1>
 
-<p style="margin-top:20px;">
-Hi, I'm Ashik. I help businesses automate workflows,
-build reporting systems, create dashboards,
-and develop custom software solutions.
+<p>
+Excelist helps businesses automate reporting,
+build intelligent dashboards, uncover trends,
+monitor KPIs and make data-driven decisions.
 </p>
 
-<div class="hero-buttons">
-<button class="btn primary">View Portfolio</button>
-<button class="btn outline">Book Consultation</button>
+<div class="btn-group">
+<a href="#services" class="btn btn-primary">
+Explore Solutions
+</a>
+
+<a href="#contact" class="btn btn-outline">
+Free Consultation
+</a>
 </div>
+
 </div>
 
 <div class="dashboard">
 
 <div class="card">
-<p>Automation Projects</p>
-<div class="metric">20+</div>
+<p>Reports Automated</p>
+<div class="metric">500+</div>
 </div>
 
 <div class="card">
-<p>Reports Generated</p>
-<div class="metric">50K+</div>
+<p>Dashboards Created</p>
+<div class="metric">50+</div>
 </div>
 
 <div class="card">
 <p>Hours Saved</p>
-<div class="metric">1250+</div>
+<div class="metric">1,200+</div>
 </div>
 
 <div class="card">
-<p>Business Solutions</p>
-<div class="metric">15+</div>
+<p>Data Sources Integrated</p>
+<div class="metric">100+</div>
 </div>
 
 </div>
 
 </div>
+
 </section>
 
-<section id="about">
+<section id="dashboard">
+
 <div class="container">
 
 <div class="section-title">
-<h2>About Me</h2>
+<h2>Business Intelligence Dashboard</h2>
+<p>Visualize data. Discover insights. Make smarter decisions.</p>
 </div>
 
-<div class="card">
-<p>
-I specialize in Business Automation, Reporting Systems,
-Dashboard Development, Data Analytics, Google Apps Script,
-Java Spring Boot, React Applications, and Process Automation.
+<div class="dashboard-preview">
 
-My mission is to help businesses eliminate repetitive work
-and gain valuable insights from their data.
-</p>
+<h3>Executive Performance Overview</h3>
+
+<div class="chart-placeholder"></div>
+
 </div>
 
 </div>
+
 </section>
 
 <section id="services">
+
 <div class="container">
 
 <div class="section-title">
 <h2>Services</h2>
+<p>Helping businesses unlock the power of their data.</p>
 </div>
 
-<div class="grid-3">
+<div class="grid">
 
 <div class="service-card">
-<div class="icon">⚡</div>
-<h3>Business Automation</h3>
-<p>Automate workflows, emails, approvals and repetitive business processes.</p>
-</div>
-
-<div class="service-card">
-<div class="icon">📊</div>
-<h3>Reporting Systems</h3>
-<p>Daily, weekly and monthly automated reporting solutions.</p>
+<div class="service-icon">📊</div>
+<h3>Business Reporting</h3>
+<p>Automated daily, weekly and monthly business reports.</p>
 </div>
 
 <div class="service-card">
-<div class="icon">📈</div>
+<div class="service-icon">📈</div>
 <h3>Dashboard Development</h3>
-<p>Power BI, Excel and Google Sheets dashboards.</p>
+<p>Interactive KPI dashboards using Excel, Power BI and Google Sheets.</p>
 </div>
 
 <div class="service-card">
-<div class="icon">💻</div>
-<h3>Custom Software</h3>
-<p>React and Spring Boot applications tailored to your needs.</p>
+<div class="service-icon">🔍</div>
+<h3>Business Analytics</h3>
+<p>Identify trends, opportunities and performance drivers.</p>
 </div>
 
 <div class="service-card">
-<div class="icon">🧹</div>
+<div class="service-icon">⚡</div>
+<h3>Reporting Automation</h3>
+<p>Reduce manual effort through automated data collection.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">🧹</div>
 <h3>Data Cleansing</h3>
-<p>Transform messy business data into usable information.</p>
+<p>Transform messy spreadsheets into reliable business datasets.</p>
 </div>
 
 <div class="service-card">
-<div class="icon">🤖</div>
-<h3>API Integrations</h3>
-<p>Connect systems and automate data exchange.</p>
+<div class="service-icon">📦</div>
+<h3>Data Transformation</h3>
+<p>Convert raw information into analysis-ready data models.</p>
 </div>
 
 </div>
 
 </div>
+
 </section>
 
-<section>
+<section id="products">
+
 <div class="container">
 
 <div class="section-title">
-<h2>Skills Dashboard</h2>
+<h2>Products & Solutions</h2>
+<p>Ready-to-use reporting and analytics solutions.</p>
+</div>
+
+<div class="products">
+
+<div class="product">
+<h3>Executive Dashboard Suite</h3>
+<p>Business KPI dashboards for management reporting.</p>
+<span class="tag">Dashboard</span>
+</div>
+
+<div class="product">
+<h3>Market Analytics Hub</h3>
+<p>Indian stock market insights and analytics platform.</p>
+<span class="tag">Analytics</span>
+</div>
+
+<div class="product">
+<h3>Expense Intelligence</h3>
+<p>Automated expense tracking and reporting.</p>
+<span class="tag">Reporting</span>
+</div>
+
+<div class="product">
+<h3>Automated Reporting Platform</h3>
+<p>Scheduled report generation and delivery system.</p>
+<span class="tag">Automation</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Expertise</h2>
+<p>Technologies and capabilities powering Excelist.</p>
 </div>
 
 <div class="skills">
 
-<div class="skill">
-<h3>Google Apps Script</h3>
-<div class="progress"><div class="bar" style="width:95%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Excel / VBA</h3>
-<div class="progress"><div class="bar" style="width:90%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Java Spring Boot</h3>
-<div class="progress"><div class="bar" style="width:85%"></div></div>
-</div>
-
-<div class="skill">
-<h3>React.js</h3>
-<div class="progress"><div class="bar" style="width:75%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Power BI</h3>
-<div class="progress"><div class="bar" style="width:80%"></div></div>
-</div>
-
-<div class="skill">
-<h3>MySQL</h3>
-<div class="progress"><div class="bar" style="width:85%"></div></div>
-</div>
+<div class="skill">Excel</div>
+<div class="skill">Google Sheets</div>
+<div class="skill">Google Apps Script</div>
+<div class="skill">Power BI</div>
+<div class="skill">Data Analytics</div>
+<div class="skill">Business Intelligence</div>
+<div class="skill">Dashboard Design</div>
+<div class="skill">KPI Reporting</div>
+<div class="skill">JasperReports</div>
+<div class="skill">MySQL</div>
+<div class="skill">Data Processing</div>
+<div class="skill">Automation</div>
 
 </div>
 
 </div>
-</section>
 
-<section id="products">
-<div class="container">
-
-<div class="section-title">
-<h2>Products</h2>
-</div>
-
-<div class="projects">
-
-<div class="project">
-<div class="project-image"></div>
-<div class="project-content">
-<h3>Expense Tracker</h3>
-<p>Automatically track expenses from Gmail and generate reports.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-image"></div>
-<div class="project-content">
-<h3>Stock Analytics Platform</h3>
-<p>FII tracking, market analytics and automated reporting.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-image"></div>
-<div class="project-content">
-<h3>Report Delivery Platform</h3>
-<p>Subscription-based report generation and delivery system.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<section id="projects">
-<div class="container">
-
-<div class="section-title">
-<h2>Featured Projects</h2>
-</div>
-
-<div class="projects">
-
-<div class="project">
-<div class="project-image"></div>
-<div class="project-content">
-<h3>Instagram Automation</h3>
-<p>Comment monitoring and automated responses using Google Apps Script.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-image"></div>
-<div class="project-content">
-<h3>Business Reporting System</h3>
-<p>Automated report generation with licensing and subscriptions.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-image"></div>
-<div class="project-content">
-<h3>Stock Market Dashboard</h3>
-<p>Interactive analytics and insights for investors.</p>
-</div>
-</div>
-
-</div>
-
-</div>
 </section>
 
 <section id="contact">
+
 <div class="container">
 
 <div class="section-title">
-<h2>Let's Work Together</h2>
+<h2>Let's Build Better Insights</h2>
+<p>Tell us about your reporting and analytics needs.</p>
 </div>
 
 <div class="contact-box">
 
-<input placeholder="Your Name">
-<input placeholder="Email">
-<textarea rows="5" placeholder="Tell me about your project"></textarea>
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Email Address">
+
+<textarea placeholder="Tell us about your project..."></textarea>
 
 <br><br>
 
-<button class="btn primary">
-Send Message
+<button class="btn btn-primary">
+Request Consultation
 </button>
 
 </div>
 
 </div>
+
 </section>
 
 <footer>
-© 2026 Excelist | Business Automation & Reporting Solutions
+© 2026 Excelist • Data Analytics • Reporting • Dashboards • Business Intelligence
 </footer>
 
 </body>
