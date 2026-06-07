@@ -3,601 +3,944 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Excelist | Data Analytics & Business Intelligence</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Excelist | Enterprise Business Intelligence & Automation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+:root {
+    --primary-green: #16A34A;
+    --primary-blue: #003B73;
+    --bg-primary: #07101D;
+    --bg-secondary: #0D1726;
+    --bg-card: #111827;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --border-alpha: rgba(255, 255, 255, 0.07);
 }
 
-html{
-    scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-body{
-    background:#050816;
-    color:#fff;
-    overflow-x:hidden;
+html {
+    scroll-behavior: smooth;
 }
 
-:root{
-    --blue:#003B73;
-    --blue-dark:#001E3C;
-    --green:#22C55E;
-    --green-dark:#16A34A;
-    --card:#0F172A;
-    --text:#E2E8F0;
-    --muted:#94A3B8;
+body {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-card) 100%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-.container{
-    width:90%;
-    max-width:1400px;
-    margin:auto;
+.container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
 }
 
-section{
-    padding:100px 0;
+/* Glassmorphism Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(7, 16, 29, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-alpha);
 }
 
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:1000;
-    background:rgba(5,8,22,0.95);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(255,255,255,.05);
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
 }
 
-.nav-wrapper{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 0;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.5px;
 }
 
-.logo-nav{
-    height:45px;
+.nav-links {
+    display: flex;
+    gap: 32px;
 }
 
-.nav-links{
-    display:flex;
-    gap:30px;
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
 }
 
-.nav-links a{
-    text-decoration:none;
-    color:#fff;
-    font-weight:500;
+.nav-links a:hover {
+    color: var(--primary-green);
 }
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    position:relative;
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.05) 0%, transparent 50%);
 }
 
-.hero::before{
-    content:'';
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,var(--green),transparent 70%);
-    opacity:.08;
-    top:-150px;
-    right:-150px;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
 }
 
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:60px;
-    align-items:center;
+.trust-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22, 163, 74, 0.1);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+    color: var(--primary-green);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
 }
 
-.hero-logo{
-    width:420px;
-    max-width:100%;
-    margin-bottom:30px;
+.hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
 }
 
-.hero h1{
-    font-size:64px;
-    line-height:1.1;
-    margin-bottom:20px;
+.hero h1 span {
+    background: linear-gradient(90deg, #fff 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.highlight{
-    color:var(--green);
+.hero p {
+    font-size: 19px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 580px;
 }
 
-.hero p{
-    font-size:20px;
-    color:var(--muted);
-    line-height:1.8;
+.btn-group {
+    display: flex;
+    gap: 16px;
 }
 
-.btn-group{
-    margin-top:35px;
-    display:flex;
-    gap:15px;
+.btn {
+    padding: 15px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn{
-    padding:14px 28px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
+.btn-primary {
+    background: var(--primary-green);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(22, 163, 74, 0.25);
 }
 
-.btn-primary{
-    background:var(--green);
-    color:#fff;
+.btn-primary:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(22, 163, 74, 0.35);
 }
 
-.btn-primary:hover{
-    transform:translateY(-3px);
+.btn-outline {
+    border: 1px solid var(--border-alpha);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
 }
 
-.btn-outline{
-    border:1px solid var(--green);
-    color:#fff;
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--text-muted);
 }
 
-.dashboard{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+/* Metric Display Panels */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-.card{
-    background:var(--card);
-    padding:25px;
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,.05);
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-alpha);
+    padding: 30px 24px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
 }
 
-.metric{
-    font-size:38px;
-    font-weight:800;
-    color:var(--green);
-    margin-top:10px;
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(22, 163, 74, 0.03) 0%, transparent 100%);
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
+.metric-num {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
 }
 
-.section-title h2{
-    font-size:42px;
+.metric-num span {
+    color: var(--primary-green);
 }
 
-.section-title p{
-    color:var(--muted);
-    margin-top:10px;
+.metric-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
+/* Universal Section Configurations */
+section {
+    padding: 120px 0;
 }
 
-.service-card{
-    background:var(--card);
-    padding:30px;
-    border-radius:20px;
-    transition:.3s;
+.section-header {
+    max-width: 650px;
+    margin: 0 auto 64px auto;
+    text-align: center;
 }
 
-.service-card:hover{
-    transform:translateY(-8px);
+.section-header h2 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
 }
 
-.service-icon{
-    font-size:42px;
-    margin-bottom:15px;
+.section-header p {
+    color: var(--text-muted);
+    font-size: 16px;
 }
 
-.service-card h3{
-    margin-bottom:10px;
+/* Feature Dashboard Preview Container */
+.dashboard-window {
+    background: #0b1322;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    overflow: hidden;
 }
 
-.service-card p{
-    color:var(--muted);
+.window-header {
+    background: #111c30;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border-alpha);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.dashboard-preview{
-    background:var(--card);
-    border-radius:25px;
-    padding:30px;
+.window-dots {
+    display: flex;
+    gap: 8px;
 }
 
-.chart-placeholder{
-    height:250px;
-    border-radius:15px;
-    margin-top:20px;
-    background:
-    linear-gradient(
-    180deg,
-    rgba(34,197,94,.15),
-    rgba(34,197,94,.02));
-    position:relative;
-    overflow:hidden;
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #27272a;
 }
 
-.chart-placeholder::after{
-    content:'';
-    position:absolute;
-    width:120%;
-    height:3px;
-    background:var(--green);
-    top:55%;
-    left:-10%;
-    transform:rotate(-12deg);
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.window-title {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+.window-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
 }
 
-.product{
-    background:var(--card);
-    border-radius:20px;
-    padding:25px;
+.widget-sidebar {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border-alpha);
+    border-radius: 12px;
+    padding: 20px;
 }
 
-.product h3{
-    margin-bottom:10px;
+.sidebar-item {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-weight: 500;
 }
 
-.tag{
-    display:inline-block;
-    background:rgba(34,197,94,.15);
-    color:var(--green);
-    padding:5px 10px;
-    border-radius:20px;
-    margin-top:10px;
-    font-size:13px;
+.sidebar-item.active {
+    background: rgba(22, 163, 74, 0.15);
+    color: var(--primary-green);
 }
 
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    justify-content:center;
+.widget-content h4 {
+    font-size: 20px;
+    margin-bottom: 6px;
 }
 
-.skill{
-    padding:12px 18px;
-    border-radius:50px;
-    background:var(--card);
+.widget-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
 }
 
-.contact-box{
-    max-width:700px;
-    margin:auto;
-    background:var(--card);
-    padding:40px;
-    border-radius:25px;
+.mock-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
-input,textarea{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    margin-top:15px;
-    background:#1E293B;
-    color:white;
+.mock-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-alpha);
+    padding: 16px;
+    border-radius: 8px;
 }
 
-textarea{
-    min-height:150px;
+.mock-card label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
 }
 
-footer{
-    padding:30px;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.05);
-    color:var(--muted);
+.mock-card val {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
-@media(max-width:900px){
-
-.hero-grid{
-    grid-template-columns:1fr;
+.mock-chart-box {
+    height: 200px;
+    border: 1px solid var(--border-alpha);
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(22, 163, 74, 0.04) 0%, transparent 100%);
+    position: relative;
 }
 
-.hero h1{
-    font-size:42px;
+/* Strategic Grid Components */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
 }
 
-.dashboard{
-    grid-template-columns:1fr;
+.problem-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-alpha);
+    padding: 32px;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
 }
 
-.nav-links{
-    display:none;
+.problem-card:hover {
+    transform: translateY(-4px);
 }
 
+.problem-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
+.problem-card h3::before {
+    content: '✕';
+    color: var(--danger);
+    font-size: 16px;
+    background: rgba(239, 68, 68, 0.1);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.problem-card p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.solution-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-alpha);
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.solution-card:hover {
+    border-color: var(--primary-green);
+    background: rgba(22, 163, 74, 0.01);
+}
+
+.solution-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.solution-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* Case Study Blocks */
+.case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-alpha);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.case-body {
+    padding: 32px;
+}
+
+.case-body h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-alpha);
+    padding-bottom: 16px;
+}
+
+.case-meta {
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.case-meta strong {
+    display: block;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.case-meta p {
+    color: var(--text-secondary);
+}
+
+.case-meta.result-meta p {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+/* Technology Grid */
+.tech-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.tech-pill {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-alpha);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Form Systems */
+.contact-container {
+    max-width: 640px;
+    margin: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-alpha);
+    padding: 48px;
+    border-radius: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: #090f1a;
+    border: 1px solid var(--border-alpha);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+}
+
+/* Footer Systems */
+footer {
+    background: #040a12;
+    padding: 60px 0 30px 0;
+    border-top: 1px solid var(--border-alpha);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 12px;
+    max-width: 320px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+}
+
+.link-col h5 {
+    color: var(--text-primary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.link-col ul {
+    list-style: none;
+}
+
+.link-col ul li {
+    margin-bottom: 10px;
+}
+
+.link-col ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.link-col ul li a:hover {
+    color: var(--primary-green);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .window-body { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-links { justify-content: flex-start; }
+    .hero h1 { font-size: 44px; }
+}
 </style>
 </head>
-
 <body>
 
 <nav>
-<div class="container nav-wrapper">
-
-<img src="assets/logo/excelist-logo.png"
-     alt="Excelist"
-     class="logo-nav">
-
-<div class="nav-links">
-<a href="#services">Services</a>
-<a href="#dashboard">Dashboard</a>
-<a href="#products">Products</a>
-<a href="#skills">Expertise</a>
-<a href="#contact">Contact</a>
-</div>
-
-</div>
+    <div class="container nav-wrapper">
+        <a href="#" class="logo-container">
+            <svg width="32" height="32" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="100,50 250,200 200,250 50,100" fill="#FFFFFF"/>
+                <polygon points="300,250 450,400 400,450 250,300" fill="#FFFFFF"/>
+                <polygon points="125,350 345,130 315,100 420,80 400,185 370,155 150,375" fill="#16A34A"/>
+            </svg>
+            Excelist
+        </a>
+        <div class="nav-links">
+            <a href="#solutions">Solutions</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#case-studies">Case Studies</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
 </nav>
 
 <section class="hero">
-
-<div class="container hero-grid">
-
-<div>
-
-<img src="assets/logo/excelist-logo.png"
-     alt="Excelist"
-     class="hero-logo">
-
-<h1>
-Transform Business Data Into
-<span class="highlight">Actionable Insights</span>
-</h1>
-
-<p>
-Excelist helps businesses automate reporting,
-build intelligent dashboards, uncover trends,
-monitor KPIs and make data-driven decisions.
-</p>
-
-<div class="btn-group">
-<a href="#services" class="btn btn-primary">
-Explore Solutions
-</a>
-
-<a href="#contact" class="btn btn-outline">
-Free Consultation
-</a>
-</div>
-
-</div>
-
-<div class="dashboard">
-
-<div class="card">
-<p>Reports Automated</p>
-<div class="metric">500+</div>
-</div>
-
-<div class="card">
-<p>Dashboards Created</p>
-<div class="metric">50+</div>
-</div>
-
-<div class="card">
-<p>Hours Saved</p>
-<div class="metric">1,200+</div>
-</div>
-
-<div class="card">
-<p>Data Sources Integrated</p>
-<div class="metric">100+</div>
-</div>
-
-</div>
-
-</div>
-
+    <div class="container hero-grid">
+        <div>
+            <div class="trust-tag">Business Intelligence. Simplified.</div>
+            <h1>Stop Spending Hours Building Reports. <br><span>Start Making Better Decisions.</span></h1>
+            <p>Excelist helps businesses automate reporting, build executive dashboards, monitor KPIs, and transform raw business data into actionable insights.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Request Free Dashboard Audit</a>
+                <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="metric-card">
+                <div class="metric-num">500<span>+</span></div>
+                <p>Reports Automated</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">50<span>+</span></div>
+                <p>Dashboards Created</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">1,200<span>+</span></div>
+                <p>Hours Saved</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">100<span>+</span></div>
+                <p>Data Sources Integrated</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="dashboard">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Business Intelligence Dashboard</h2>
-<p>Visualize data. Discover insights. Make smarter decisions.</p>
-</div>
-
-<div class="dashboard-preview">
-
-<h3>Executive Performance Overview</h3>
-
-<div class="chart-placeholder"></div>
-
-</div>
-
-</div>
-
+<section id="dashboard" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Automation Interface</h2>
+            <p>Every deployment contains interactive metric visualization layers architecture optimized for immediate business analysis.</p>
+        </div>
+        
+        <div class="dashboard-window">
+            <div class="window-header">
+                <div class="window-dots">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
+                <div class="window-title">Executive Sales Performance Dashboard — Powered by Amazon QuickSight</div>
+                <div style="width: 42px;"></div>
+            </div>
+            <div class="window-body">
+                <div class="widget-sidebar">
+                    <div class="sidebar-item active">Revenue Metrics</div>
+                    <div class="sidebar-item">Margin Analysis</div>
+                    <div class="sidebar-item">Customer Segments</div>
+                    <div class="sidebar-item">Regional Analytics</div>
+                    <div class="sidebar-item">Executive KPI Monitoring</div>
+                </div>
+                <div class="widget-content">
+                    <h4>Centralized Corporate Analytics</h4>
+                    <p>Real-time visibility into continuous performance drivers with automated validation infrastructure.</p>
+                    <div class="mock-metrics">
+                        <div class="mock-card"><label>Gross Margin Ratio</label><val>64.2%</val></div>
+                        <div class="mock-card"><label>Active Operational Flow</label><val>Automated</val></div>
+                        <div class="mock-card"><label>Data Integrity Rate</label><val>99.98%</val></div>
+                    </div>
+                    <div class="mock-chart-box">
+                        <svg width="100%" height="100%" style="position:absolute; overflow:visible;">
+                            <path d="M 0 160 Q 120 130 240 80 T 480 40 T 700 20" fill="none" stroke="#16A34A" stroke-width="3"/>
+                            <circle cx="240" cy="80" r="5" fill="#FFF" stroke="#16A34A" stroke-width="2"/>
+                            <circle cx="480" cy="40" r="5" fill="#FFF" stroke="#16A34A" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="services">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Services</h2>
-<p>Helping businesses unlock the power of their data.</p>
-</div>
-
-<div class="grid">
-
-<div class="service-card">
-<div class="service-icon">📊</div>
-<h3>Business Reporting</h3>
-<p>Automated daily, weekly and monthly business reports.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">📈</div>
-<h3>Dashboard Development</h3>
-<p>Interactive KPI dashboards using Excel, Power BI and Google Sheets.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">🔍</div>
-<h3>Business Analytics</h3>
-<p>Identify trends, opportunities and performance drivers.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">⚡</div>
-<h3>Reporting Automation</h3>
-<p>Reduce manual effort through automated data collection.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">🧹</div>
-<h3>Data Cleansing</h3>
-<p>Transform messy spreadsheets into reliable business datasets.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">📦</div>
-<h3>Data Transformation</h3>
-<p>Convert raw information into analysis-ready data models.</p>
-</div>
-
-</div>
-
-</div>
-
+<section id="problems">
+    <div class="container">
+        <div class="section-header">
+            <h2>Your Data Should Work For You</h2>
+            <p>We eliminate operational vulnerabilities caused by manual legacy infrastructures.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="problem-card">
+                <h3>Manual Reporting</h3>
+                <p>Spending hours every week preparing data pipelines manually instead of driving strategic execution paths.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Spreadsheet Chaos</h3>
+                <p>Managing multiple disconnected, fragmented spreadsheets lacking explicit database architectural structural integrity.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Delayed Insights</h3>
+                <p>Important decisions stalled or delayed while waiting on manual cross-departmental data preparation cycles.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Lack of Visibility</h3>
+                <p>No unified, centralized monitoring window for executives to reference performance deviations instantly.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Data Quality Issues</h3>
+                <p>Inconsistent and unreliable manual input systems causing downstream errors in critical operational data models.</p>
+            </div>
+            <div class="problem-card">
+                <h3>Repetitive Processes</h3>
+                <p>Redundant work tasks that lower team velocity and increase systemic error rates across accounting systems.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="products">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Products & Solutions</h2>
-<p>Ready-to-use reporting and analytics solutions.</p>
-</div>
-
-<div class="products">
-
-<div class="product">
-<h3>Executive Dashboard Suite</h3>
-<p>Business KPI dashboards for management reporting.</p>
-<span class="tag">Dashboard</span>
-</div>
-
-<div class="product">
-<h3>Market Analytics Hub</h3>
-<p>Indian stock market insights and analytics platform.</p>
-<span class="tag">Analytics</span>
-</div>
-
-<div class="product">
-<h3>Expense Intelligence</h3>
-<p>Automated expense tracking and reporting.</p>
-<span class="tag">Reporting</span>
-</div>
-
-<div class="product">
-<h3>Automated Reporting Platform</h3>
-<p>Scheduled report generation and delivery system.</p>
-<span class="tag">Automation</span>
-</div>
-
-</div>
-
-</div>
-
+<section id="solutions" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+        <div class="section-header">
+            <h2>Business Intelligence Solutions</h2>
+            <p>Professional engineering configured specifically to scale corporate visibility metrics.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="solution-card">
+                <h3>Executive Reporting</h3>
+                <p>Automated daily, weekly, and monthly business summaries delivered directly inside your operational pipeline exactly when you need them.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Dashboard Development</h3>
+                <p>Interactive interfaces engineered to instantly parse and visually prioritize mission-critical operational metrics.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Business Analytics</h3>
+                <p>Statistical trend discovery that uncovers latent monetization options and performance vectors hidden inside legacy databases.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Reporting Automation</h3>
+                <p>Systemic elimination of manual input loops via algorithmic data extractors and automated script systems.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Data Transformation</h3>
+                <p>Converting fragmented raw information into cleanly normalized, fully query-optimized analytical repositories.</p>
+            </div>
+            <div class="solution-card">
+                <h3>KPI Monitoring</h3>
+                <p>Rigorous mathematical validation of performance trends to provide leaders with accurate forecasting telemetry.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="skills">
+<section id="portfolio">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Analytics Solutions</h2>
+            <p>An overview of system solutions designed for modern enterprise performance tracing.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="solution-card" style="background: var(--bg-card)">
+                <h3 style="color:var(--primary-green)">01</h3>
+                <h4 style="font-size:20px; margin-bottom:8px;">Sales Performance Analytics</h4>
+                <p>Comprehensive layout summarizing real-time geographical performance trends and margin variations.</p>
+            </div>
+            <div class="solution-card" style="background: var(--bg-card)">
+                <h3 style="color:var(--primary-green)">02</h3>
+                <h4 style="font-size:20px; margin-bottom:8px;">Expense Intelligence Dashboard</h4>
+                <p>Algorithmic categorization tracking corporate capital deployment across operational departments.</p>
+            </div>
+            <div class="solution-card" style="background: var(--bg-card)">
+                <h3 style="color:var(--primary-green)">03</h3>
+                <h4 style="font-size:20px; margin-bottom:8px;">Market Analytics Platform</h4>
+                <p>High-frequency information layout designed for quick multi-variant asset comparison models.</p>
+            </div>
+            <div class="solution-card" style="background: var(--bg-card)">
+                <h3 style="color:var(--primary-green)">04</h3>
+                <h4 style="font-size:20px; margin-bottom:8px;">Automated Reporting System</h4>
+                <p>Continuous data extraction matrix routing performance updates directly to stakeholder networks.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="container">
+<section id="case-studies" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+        <div class="section-header">
+            <h2>Real Business Impact</h2>
+            <p>Measurable performance transformation engineered across live operations frameworks.</p>
+        </div>
+        <div class="case-grid">
+            <div class="case-card">
+                <div class="case-body">
+                    <h3>Sales Analytics Transformation</h3>
+                    <div class="case-meta"><strong>Challenge</strong><p>Regional sales teams lacked visual clarity across changing multi-variant product segments.</p></div>
+                    <div class="case-meta"><strong>Solution</strong><p>Built a centralized dashboard panel with automated multi-endpoint data parsing loops.</p></div>
+                    <div class="case-meta result-meta"><strong>Result</strong><p>Unified data access and visibility accelerated strategic execution cycles.</p></div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-body">
+                    <h3>Expense Auditing Engine</h3>
+                    <div class="case-meta"><strong>Challenge</strong><p>Manual financial tracking structures resulted in periodic calculation lag and formatting variations.</p></div>
+                    <div class="case-meta"><strong>Solution</strong><p>Deployed custom script parsing mechanics to standardize and process invoice text inputs dynamically.</p></div>
+                    <div class="case-meta result-meta"><strong>Result</strong><p>Eliminated formatting overhead while securing cross-departmental data integrity.</p></div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-body">
+                    <h3>Unified KPI Infrastructure</h3>
+                    <div class="case-meta"><strong>Challenge</strong><p>Performance information was siloed across separate cloud databases and localized sheets.</p></div>
+                    <div class="case-meta"><strong>Solution</strong><p>Engineered a structured analytical repository feeding directly into high-fidelity visual layers.</p></div>
+                    <div class="case-meta result-meta"><strong>Result</strong><p>Established a reliable single source of truth for immediate executive evaluation.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="section-title">
-<h2>Expertise</h2>
-<p>Technologies and capabilities powering Excelist.</p>
-</div>
-
-<div class="skills">
-
-<div class="skill">Excel</div>
-<div class="skill">Google Sheets</div>
-<div class="skill">Google Apps Script</div>
-<div class="skill">Power BI</div>
-<div class="skill">Data Analytics</div>
-<div class="skill">Business Intelligence</div>
-<div class="skill">Dashboard Design</div>
-<div class="skill">KPI Reporting</div>
-<div class="skill">JasperReports</div>
-<div class="skill">MySQL</div>
-<div class="skill">Data Processing</div>
-<div class="skill">Automation</div>
-
-</div>
-
-</div>
-
+<section id="tech-stack">
+    <div class="container">
+        <div class="section-header">
+            <h2>Powered By Industry Leading Tools</h2>
+            <p>We build production-grade automation layers on top of enterprise-grade architectures.</p>
+        </div>
+        <div class="tech-flex">
+            <div class="tech-pill">Excel</div>
+            <div class="tech-pill">Google Sheets</div>
+            <div class="tech-pill">Google Apps Script</div>
+            <div class="tech-pill">Amazon QuickSight</div>
+            <div class="tech-pill">Power BI</div>
+            <div class="tech-pill">JasperReports</div>
+            <div class="tech-pill">MySQL</div>
+            <div class="tech-pill">Business Intelligence Platforms</div>
+            <div class="tech-pill">Data Warehousing</div>
+            <div class="tech-pill">API Integrations</div>
+        </div>
+    </div>
 </section>
 
 <section id="contact">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Let's Build Better Insights</h2>
-<p>Tell us about your reporting and analytics needs.</p>
-</div>
-
-<div class="contact-box">
-
-<input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Email Address">
-
-<textarea placeholder="Tell us about your project..."></textarea>
-
-<br><br>
-
-<button class="btn btn-primary">
-Request Consultation
-</button>
-
-</div>
-
-</div>
-
+    <div class="container">
+        <div class="section-header">
+            <h2>Let's Build Better Business Insights</h2>
+            <p>Connect with an operations architect to optimize your data tracking pipelines.</p>
+        </div>
+        <div class="contact-container">
+            <form onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label>Corporate Identity Name</label>
+                    <input type="text" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Professional Email Address</label>
+                    <input type="email" placeholder="you@company.com">
+                </div>
+                <div class="form-group">
+                    <label>Project Parameters & System Requirements</label>
+                    <textarea placeholder="Describe your current data pipelines, software systems, and report automation objectives..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; margin-top:12px;">Request Your Free Dashboard Audit</button>
+            </form>
+        </div>
+    </div>
 </section>
 
 <footer>
-© 2026 Excelist • Data Analytics • Reporting • Dashboards • Business Intelligence
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <a href="#" class="logo-container">
+                <svg width="28" height="28" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="100,50 250,200 200,250 50,100" fill="#FFFFFF"/>
+                    <polygon points="300,250 450,400 400,450 250,300" fill="#FFFFFF"/>
+                    <polygon points="125,350 345,130 315,100 420,80 400,185 370,155 150,375" fill="#16A34A"/>
+                </svg>
+                Excelist
+            </a>
+            <p>Transforming Data Into Decisions.</p>
+        </div>
+        <div class="footer-links">
+            <div class="link-col">
+                <h5>Capabilities</h5>
+                <ul>
+                    <li><a href="#solutions">Reporting</a></li>
+                    <li><a href="#solutions">Dashboards</a></li>
+                    <li><a href="#solutions">Analytics</a></li>
+                    <li><a href="#solutions">Automation</a></li>
+                </ul>
+            </div>
+            <div class="link-col">
+                <h5>Navigation</h5>
+                <ul>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            &copy; 2026 Excelist. All Rights Reserved. Engineered for absolute operational performance.
+        </div>
+    </div>
 </footer>
 
 </body>
